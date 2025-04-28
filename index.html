@@ -646,7 +646,7 @@
                                 <label for="message" class="block text-gray-400 mb-2">Message</label>
                                 <textarea id="message" name="message" rows="4" class="w-full bg-blue-900 bg-opacity-30 rounded border border-blue-800 focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-30 text-white p-3 outline-none transition duration-300" placeholder="Your message"></textarea>
                             </div>
-                            <button type="submit" class="w-full gradient-border px-6 py-3 rounded glass text-blue-400 hover:glow transition duration-300">
+                            <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-3 rounded text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 transition duration-300">
                                 Send Message
                             </button>
                         </form>
@@ -1158,7 +1158,14 @@ if (typeof emailjs === 'undefined') {
                 this.reset(); // Reset form after successful submission
             }.bind(this), function(error) {
                 console.error('Error details:', error);
-                alert('Failed to send message: ' + JSON.stringify(error));
+                // Provide user-friendly error message
+                let errorMessage = 'Failed to send message. ';
+                if (error.text === 'Failed to fetch') {
+                    errorMessage += 'Please check your network connection or try again later.';
+                } else {
+                    errorMessage += JSON.stringify(error);
+                }
+                alert(errorMessage);
             });
     });
 }
