@@ -6,7 +6,9 @@
     <title>Sarkorbek | Full Stack Developer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
+
+
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 
@@ -632,26 +634,23 @@
                                 <label for="name" class="block text-gray-400 mb-2">Name</label>
                                 <input type="text" id="name" name="name" class="w-full bg-blue-900 bg-opacity-30 rounded border border-blue-800 focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-30 text-white p-3 outline-none transition duration-300" placeholder="Your name">
                             </div>
-                        
                             <div class="mb-6">
                                 <label for="email" class="block text-gray-400 mb-2">Email</label>
                                 <input type="email" id="email" name="email" class="w-full bg-blue-900 bg-opacity-30 rounded border border-blue-800 focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-30 text-white p-3 outline-none transition duration-300" placeholder="Your email">
                             </div>
-                        
                             <div class="mb-6">
                                 <label for="subject" class="block text-gray-400 mb-2">Subject</label>
                                 <input type="text" id="subject" name="subject" class="w-full bg-blue-900 bg-opacity-30 rounded border border-blue-800 focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-30 text-white p-3 outline-none transition duration-300" placeholder="Subject">
                             </div>
-                        
                             <div class="mb-6">
                                 <label for="message" class="block text-gray-400 mb-2">Message</label>
                                 <textarea id="message" name="message" rows="4" class="w-full bg-blue-900 bg-opacity-30 rounded border border-blue-800 focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-30 text-white p-3 outline-none transition duration-300" placeholder="Your message"></textarea>
                             </div>
-                        
                             <button type="submit" class="w-full gradient-border px-6 py-3 rounded glass text-blue-400 hover:glow transition duration-300">
                                 Send Message
                             </button>
                         </form>
+                        
                         
                     </div>
                 </div>
@@ -1128,33 +1127,41 @@
                 });
             });
         });
-// Initialize EmailJS with your public key
-emailjs.init('eV1HqLV6ldD_xK7Rj'); // Your public key
+// Check if emailjs is loaded
+if (typeof emailjs === 'undefined') {
+    console.error('EmailJS SDK failed to load. Please check the CDN URL or network connection.');
+    alert('Failed to load EmailJS. Please try again later.');
+} else {
+    // Initialize EmailJS with your User ID
+    emailjs.init('eV1HqLV6ldD_xK7Rj');
 
-// Handle the form submission
-document.getElementById('contact-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the form from submitting the traditional way
+    // Handle form submission
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        console.log('Form submitted!');
 
-    // Collect the form data
-    const formData = new FormData(this);
-    const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        subject: formData.get('subject'),
-        message: formData.get('message')
-    };
+        // Collect form data
+        const formData = new FormData(this);
+        const data = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            subject: formData.get('subject'),
+            message: formData.get('message')
+        };
+        console.log('Form data:', data);
 
-    // Send email using EmailJS
-    emailjs.send('service_1d578ji', 'template_6tjor8a', data)  // Using your actual Template ID
-        .then(function(response) {
-            console.log('Success:', response);
-            alert('Message sent successfully!');
-        }, function(error) {
-            console.log('Error:', error);
-            alert('Failed to send message: ' + error);
-        });
-});
-
+        // Send email using EmailJS
+        emailjs.send('service_1d578ji', 'template_6tjor8a', data)
+            .then(function(response) {
+                console.log('Success:', response);
+                alert('Message sent successfully!');
+                this.reset(); // Reset form after successful submission
+            }.bind(this), function(error) {
+                console.error('Error details:', error);
+                alert('Failed to send message: ' + JSON.stringify(error));
+            });
+    });
+}
     </script>
 </body>
 </html>
