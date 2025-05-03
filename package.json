@@ -1,0 +1,23 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/THESARKORBEK/portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/THESARKORBEK/portfolio/issues"
+  },
+  "homepage": "https://github.com/THESARKORBEK/portfolio#readme",
+  "description": "",
+  "dependencies": {
+    "@vercel/speed-insights": "^1.2.0"
+  }
+}
