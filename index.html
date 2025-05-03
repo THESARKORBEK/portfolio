@@ -636,19 +636,19 @@
                         <form id="contact-form">
                             <div class="mb-6">
                                 <label for="name" class="block text-gray-400 mb-2">Name</label>
-                                <input type="text" id="name" name="name" class="w-full bg-blue-900 bg-opacity-30 rounded border border-blue-800 focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-30 text-white p-3 outline-none transition duration-300" placeholder="Your name">
+                                <input required ="text" id="name" name="name" class="w-full bg-blue-900 bg-opacity-30 rounded border border-blue-800 focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-30 text-white p-3 outline-none transition duration-300" placeholder="Your name">
                             </div>
                             <div class="mb-6">
                                 <label for="email" class="block text-gray-400 mb-2">Email</label>
-                                <input type="email" id="email" name="email" class="w-full bg-blue-900 bg-opacity-30 rounded border border-blue-800 focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-30 text-white p-3 outline-none transition duration-300" placeholder="Your email">
+                                <input required type="email" id="email" name="email" class="w-full bg-blue-900 bg-opacity-30 rounded border border-blue-800 focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-30 text-white p-3 outline-none transition duration-300" placeholder="Your email">
                             </div>
                             <div class="mb-6">
                                 <label for="subject" class="block text-gray-400 mb-2">Subject</label>
-                                <input type="text" id="subject" name="subject" class="w-full bg-blue-900 bg-opacity-30 rounded border border-blue-800 focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-30 text-white p-3 outline-none transition duration-300" placeholder="Subject">
+                                <input  type="text" id="subject" name="subject" class="w-full bg-blue-900 bg-opacity-30 rounded border border-blue-800 focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-30 text-white p-3 outline-none transition duration-300" placeholder="Subject">
                             </div>
                             <div class="mb-6">
                                 <label for="message" class="block text-gray-400 mb-2">Message</label>
-                                <textarea id="message" name="message" rows="4" class="w-full bg-blue-900 bg-opacity-30 rounded border border-blue-800 focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-30 text-white p-3 outline-none transition duration-300" placeholder="Your message"></textarea>
+                                <textarea required id="message" name="message" rows="4" class="w-full bg-blue-900 bg-opacity-30 rounded border border-blue-800 focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-30 text-white p-3 outline-none transition duration-300" placeholder="Your message"></textarea>
                             </div>
                             <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-3 rounded text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 transition duration-300">
                                 Send Message
@@ -1190,4 +1190,5 @@ if (typeof emailjs === 'undefined') {
   </script>
   <script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
+
 </html>
